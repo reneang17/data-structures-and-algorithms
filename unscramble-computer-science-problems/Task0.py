@@ -20,7 +20,7 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     first = texts[0]
     last  = calls[-1]
     print("First record of texts, {} texts {} at time {}".format(first[0], first[1], first[2]))

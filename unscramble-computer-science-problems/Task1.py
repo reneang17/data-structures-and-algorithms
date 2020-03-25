@@ -21,8 +21,9 @@ Print a message:
 
 def numbers(file):
     nums = []
-    for i in file:
-        nums.append.(data[0]).append(data[1])
+    for entry in file:
+        nums.append(entry[0])
+        nums.append(entry[1])
     return nums
 
 
