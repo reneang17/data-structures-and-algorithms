@@ -34,8 +34,9 @@ Worst time complexity (Big O) equal to \(O(n^2)\). Justification:
 
 Inside the function:
   - Looping O(n)
-  - For each loop iteration, adding an element is at worst O(n), or
-  O(log(n)) if adding an element is optimized with a search algorithm.
+  - For each loop iteration, adding an element is at worst \(O(n)\), or
+   if adding an element is optimized with a search algorithm.
+   
 Outside of the function:
   - Union of sets is at worst \(O(n)\).
   - Taking length \(O(1)\).
@@ -75,9 +76,9 @@ Worst time complexity (Big O) equal to  \(O(n^3)\). Justification:
 Function Big O:
 
 - The loop is at worst of time complexity \(O(n)\).
-- ```n in n_dict``` has at worst time worst time complexity  \(O(n)\). To see this notice, that search has to occur at every element. [Reference](https://wiki.python.org/moin/TimeComplexity),
+- For each loop iteration, ```n in n_dict``` has at worst time worst time complexity  \(O(n)\). To see this notice, that search has to occur at every element. [Reference](https://wiki.python.org/moin/TimeComplexity),
 shows ```i in dict```, the most similar case, has indeed big O equal to \(O(n)\).
-- Finally, getting a dictionary value has also big O equal to \(O(n)\).
+- For each loop iteration and if,  getting a dictionary value has also big O equal to \(O(n)\).
 So the function has big O equal to \(O(n^3)\).
 
 After the function statements:
@@ -130,11 +131,11 @@ def from_bangalore(calls):
 
 ```
 
-Worst time complexity (Big O) equal to \(O(n log(n))\). Justification:
+Worst time complexity (Big O) equal to \(O(n^2 )\). Justification:
 
 Function has big(O) = O(n log(n)). Justification:
   - Outer loop \(O(n)\)
-  - Adding element to a set, checking each element has worst time complexity \(O(n)\). If this is done via some kind of binary search like algorithm, then it reduces to \(O(log(n))\).
+  - For each loop iteration, adding element to a set, checking each element has worst time complexity \(O(n)\)
   - Sort() list is at worst \(O(n * log(n))\)
 
 ## Task 4
@@ -173,14 +174,10 @@ def identify_telemarkers(calls, texts):
 
 Worst time complexity (Big O) equal to O\(n^2\). Justification:
 
+Inside the function the Big O is \(O(n  log(n))\):
 
-Funtion Big O is \(O(n  log(n))\):
   - Loop yields \(O(n)\)
-
-  - Adding  elements to a set yields \(O(log(n))\)
-
+  - For each loop iteration, Adding  elements to a set yields \(O(n)\)
   - Union of sets yields \(O(n)\)
-
   - Making set comprehension with if has Big O equal \(O(log(n))\)
-
   - Sorting a list : \(O(n* log(n))\)
