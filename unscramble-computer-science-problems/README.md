@@ -6,7 +6,7 @@ What is the first record of texts and what is the last record of calls?
 Looking at list elements
 
 Big O: \(O(1)\)
-
+Just calling list of list elements.
 
 ## Task 1
 
@@ -45,10 +45,11 @@ def max_phone_time(calls):
         key= max(n_dict, key=n_dict.get)
         return key, n_dict[key]
 ```
-Big O notation: \( O(n!)\)
+Big O notation: \( O(n * log(n))\)
 
-The first loop and hashing is at worst \( O(n!)\), if all numbers
-are different. Then the max is at worst O(m), where m is the dictionary length.
+The first loop forming dictionary should be at worst O(n * log(n)),
+because is similar to sorting.  
+Then the max is at worst O(m* log(m)), where m is the dictionary length.
 
 ## Task 3
 
@@ -68,8 +69,8 @@ def from_bangalore(calls):
 
     for call in calls:
         dialer =call[0][0:5]
-        if
-
+          if
+            ### ... ###  Operations of order 1
     # get rid fo duplicates and
     codes = list(set(codes))
     #order  lexicographically in line
@@ -78,11 +79,11 @@ def from_bangalore(calls):
 
 ```
 
-Big O notation: \(O(n) + O(m * log(m))\)
+Big O notation: \(O(n * log(n))\)
 
   - Looping \(O(n)
 
-  - Sorting over bangalore is \(O(m * log(m))\)
+  - Sorting over bangalore is at worst \(O(n * log(n))\)
 
 ## Task 4
 
@@ -122,6 +123,6 @@ Big O notation: \(n^2\)
 
   - Looping to form a list \(O(n)\)
 
-  - set(list) is at worst: \(O(n^2)\)
+  - set(list) is at worst: \(O(n* log(n))\)
 
   - Sorting a list : \(O(n* log(n))\)
