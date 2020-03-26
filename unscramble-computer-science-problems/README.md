@@ -174,10 +174,10 @@ def identify_telemarkers(calls, texts):
 
 Worst time complexity (Big O) equal to O\(n^2\). Justification:
 
-Inside the function the Big O is \(O(n  log(n))\):
+Inside the function the Big O is \(O(n^2)\):
 
   - Loop yields \(O(n)\)
   - For each loop iteration, Adding  elements to a set yields \(O(n)\)
   - Union of sets yields \(O(n)\)
-  - Making set comprehension with if has Big O equal \(O(log(n))\)
+  - Making set comprehension with an if statement has Big O equal \(O(n^2)\)
   - Sorting a list : \(O(n* log(n))\)
