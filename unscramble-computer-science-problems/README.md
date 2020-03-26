@@ -31,11 +31,14 @@ print("There are {} different telephone numbers in the records.".format(len(tel_
 ```
 
 Worst time complexity (Big O) equal to \(O(n^2)\). Justification:
-Inside the function
+
+Inside the function:
   - Looping O(n)
-  - For each loop iteration, adding an element is at worst O(n).
+  - For each loop iteration, adding an element is at worst O(n), or
+  O(log(n)) if adding an element is optimized with a search algorithm.
 Outside of the function:
   - Union of sets is at worst \(O(n)\).
+  - Taking length \(O(1)\).
 
 ## Task 2
 
