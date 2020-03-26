@@ -8,7 +8,8 @@ Looking at list elements
 
 Worst time complexity (Big O) equal to \(O(1)\). Justification:
 
-Because we are not iterating the elements from input lists (calls or texts). We are accessing the first and last value of an array by an index.
+We are accessing the first and last value of an array by an index which occurs
+on constant time, \(O(1)\).
 
 ## Task 1
 
@@ -34,9 +35,8 @@ Worst time complexity (Big O) equal to \(O(n^2)\). Justification:
 
 Inside the function:
   - Looping O(n)
-  - For each loop iteration, adding an element is at worst \(O(n)\), or
-   if adding an element is optimized with a search algorithm.
-   
+  - For each loop iteration, adding an element is at worst \(O(n)\).
+
 Outside of the function:
   - Union of sets is at worst \(O(n)\).
   - Taking length \(O(1)\).
@@ -83,8 +83,8 @@ So the function has big O equal to \(O(n^3)\).
 
 After the function statements:
 
-- Then the max is an operation big O equal to O(n).
-- Get dictionary item has big O equal to O(n).
+- Computing the max has big O equal to O(n).
+- Getting a dictionary item has big O equal to O(n).
 
 
 ## Task 3
@@ -133,7 +133,7 @@ def from_bangalore(calls):
 
 Worst time complexity (Big O) equal to \(O(n^2 )\). Justification:
 
-Function has big(O) = O(n log(n)). Justification:
+Function has big(O) = O(n^2). Justification:
   - Outer loop \(O(n)\)
   - For each loop iteration, adding element to a set, checking each element has worst time complexity \(O(n)\)
   - Sort() list is at worst \(O(n * log(n))\)
