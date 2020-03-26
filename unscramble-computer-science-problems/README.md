@@ -76,8 +76,8 @@ Worst time complexity (Big O) equal to  \(O(n^3)\). Justification:
 Function Big O:
 
 - The loop is at worst of time complexity \(O(n)\).
-- For each loop iteration, ```n in n_dict``` has at worst time worst time complexity  \(O(n)\). To see this notice, that search has to occur at every element. [Reference](https://wiki.python.org/moin/TimeComplexity),
-shows ```i in dict```, the most similar case, has indeed big O equal to \(O(n)\).
+- For each loop iteration, ```n in n_dict``` has at worst time worst time complexity  \(O(n)\). To see this notice, that search has to occur at every element. [Reference](https://wiki.python.org/moin/TimeComplexity) states that ```i in set```, has indeed big O equal to \(O(n)\). We can
+assume that is similar for ```i in dic```, i.e. it also has big O equal to \(O(n)\).
 - For each loop iteration and if,  getting a dictionary value has also big O equal to \(O(n)\).
 So the function has big O equal to \(O(n^3)\).
 
