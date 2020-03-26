@@ -20,12 +20,12 @@ Print a message:
 September 2016.".
 """
 
-def max_phone_time(calls):
-
+def phone_time(calls):
+    n_dict = {}
     for call in calls:
         n1, n2 = call[0], call[1]
-        time = call[3]
-        n_dict = {}
+        time = int(call[-1])
+
 
         if n1 in n_dict:
             n_dict[n1] += time
@@ -37,12 +37,11 @@ def max_phone_time(calls):
         else:
             n_dict[n2] = time
 
-        key= max(n_dict, key=n_dict.get)
-        return key, n_dict[key]
+    return n_dict
 
 
 if __name__ == '__main__':
-
-
-    phone, time = max_phone_time(calls)
+    n_dict = phone_time(calls)
+    phone= max(n_dict, key=n_dict.get)
+    time = n_dict[phone]
     print(f"{phone} spent the longest time, {time} seconds, on the phone during September 2016.")

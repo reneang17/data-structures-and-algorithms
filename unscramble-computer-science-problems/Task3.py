@@ -52,7 +52,7 @@ def from_bangalore(calls):
     from_b : number of call found from Bangalore
     to_b: number of calls from bangalore to bangalore
     """
-    codes = []
+    codes = set()
     from_b = 0 # counter of calls from bangalore
     to_b = 0 # counter of call from bangalore to bangalore
 
@@ -63,20 +63,21 @@ def from_bangalore(calls):
             dialed= call[1]
             # Fix land case
             if dialed[:2] == '(0':
-                codes.append(dialed.split(sep=')')[0] + ')')
-                to_b+=1
+                codes.add(dialed.split(sep=')')[0] + ')')
+                if dialed[:5] == '(080)':
+                    to_b+=1
             # If Telemarketer
             elif dialed[:3] == '140':
-                codes.append(dialed[:3])
+                codes.add(dialed[:3])
             # If Mobile
             elif len(dialed.split())==2 and \
             dialed[0].isdigit()  and int(dialed[0]) in [7,8,9]:
-                codes.append(dialed[:4])
+                codes.add(dialed[:4])
             # Rise exception ow
             else:
                 assert False, 'Another type of number was found:{}'.format(dialed)
-    # get rid fo duplicates and
-    codes = list(set(codes))
+
+    codes = list(codes)
     #order  lexicographically in line
     codes.sort()
     return codes, from_b, to_b

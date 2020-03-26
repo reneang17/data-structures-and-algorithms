@@ -32,20 +32,19 @@ def identify_telemarkers(calls, texts):
     Returns:
     numbers: list, possible telemarkers
     """
-    dialer = []
-    dialed = []
+    dialer = set()
+    dialed = set()
     for call in calls:
-        dialer.append(call[0])
-        dialed.append(call[1])
+        dialer.add(call[0])
+        dialed.add(call[1])
 
-    texter = []
-    texted = []
+    texter = set()
+    texted = set()
     for text in texts:
-        texter.append(text[0])
-        texted.append(text[1])
+        texter.add(text[0])
+        texted.add(text[1])
 
-    no_telemarketers = set(dialed+texter+texted)
-    dialer = set(dialer)
+    no_telemarketers = dialed.union(texter).union(texted)
 
     telemarketers = {n for n in dialer if n not in no_telemarketers}
     return  sorted(list(telemarketers))
