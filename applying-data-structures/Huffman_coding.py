@@ -1,23 +1,6 @@
 import sys
 from data_structures import Tree, Queue, Stack
 
-class Node(object):
-
-    def __init__(self, freq = None, char = None):
-        self.char = char
-        self.freq = freq
-        self.left = None
-        self.right = None
-
-    def get_freq(self):
-        return self.freq
-
-    def get_char(self):
-        return self.char
-
-    def __repr__(self):
-        return f"{self.freq} {self.char}"
-
 
 class Node(object):
 
@@ -109,9 +92,11 @@ class HTree():
 
 
 class Huffman():
-    def __init__(self, data):
-        self.data = data
-        self.preprocess_data()
+    def __init__(self, data =None):
+        if data is not None:
+            self.data = data
+            self.preprocess_data()
+        self.huffman_tree= None
 
 
     def preprocess_data(self):
@@ -130,8 +115,8 @@ class Huffman():
         stack = Stack() #Push most frequent firts
 
         [stack.push(Node(freq = x[1], char= x[0]))  for x in sorted_freq]
-        print(stack.arr)
-        print('top stack:', stack.top())
+        #print(stack.arr)
+        #print('top stack:', stack.top())
 
         return stack
 
@@ -149,7 +134,7 @@ class Huffman():
     def build_codes(self, node, bin_code):
         if node.left is None and node.right is None:
             key = node.get_char()
-            self.codes[key] = bin_code
+            self.code[key] = bin_code
 
         if node.left is not None:
             self.build_codes(node.left, bin_code+'0')
@@ -157,17 +142,21 @@ class Huffman():
         if node.right is not None:
             self.build_codes(node.right, bin_code+'1')
 
-
-
-
-
-
     def huffman_encode(self):
         #Address trivial cases
         if len(self.data) == 0:
-            return -1,-1,-1
+            self.huffman_tree = HTree()
+            self.encoded = ''
+            return self.encoded, self.huffman_tree
+
         if len(set(self.data)) == 1:
-            return '1'*len(self.data), [1]*len(self.data), self.data[0]
+            root = Node(freq = len(self.data), char= None)
+            self.huffman_tree = HTree(root)
+            node = Node(freq = len(self.data), char =self.data[0])
+            root.set_left_child(node)
+            self.huffman_tree
+            self.encoded = '0'*len(self.data)
+            return self.encoded , self.huffman_tree
 
         #stack stack with more frequent at the bottom.
         self.stack = self.sort_frequencies()
@@ -176,75 +165,113 @@ class Huffman():
         while self.stack.num_elements > 1:
             t1 =  self.stack.pop()
             t2 =  self.stack.pop()
-            #Build tree
-            grow_node= Node(freq= t1.get_freq()+ t2.get_freq() , char = None)
-            grow_node.set_left_child(t1)
-            grow_node.set_right_child(t2)
+            #Grow tree by creating a new node an attaching
+            #lesf frequent nodes
+            new_node= Node(freq= t1.get_freq()+ t2.get_freq() , char = None)
+            new_node.set_left_child(t1)
+            new_node.set_right_child(t2)
 
-            self.insert_node(grow_node)
+            self.insert_node(new_node)
 
         root_node= self.stack.pop()
         self.huffman_tree = HTree(node = root_node)
 
-        self.codes = {}
-        self.build_codes(root_node, '')
+        self.code = {}
+        self.build_codes(root_node, '') # Filles fictionary
+
+        encoded_list = [self.code[c] for c in self.data]
+        self.encoded = "".join(encoded_list)
+
+        return self.encoded, self.huffman_tree
+
+
+    def huffman_decode(self):
+        decoded_list = []
+        node= self.huffman_tree.get_root()
+        for i in self.encoded:
+            if i =="0":
+                node = node.left
+            elif i =="1":
+                node = node.right
+
+            if node.left is None and node.right is None:
+                decoded_list.append(node.get_char())
+                node = self.huffman_tree.get_root()
+
+        return ''.join(decoded_list)
+
+
+def _huffman_encoding(data):
+    huffman = Huffman(data)
+    encoded, huffman_tree = huffman_encode()
+    return encoded, huffman_tree
+
+
+def _huffman_decoding(data, tree):
+    decoded_list = []
+    node= tree.get_root()
+    for i in data:
+        if i =="0":
+            node = node.left
+        elif i =="1":
+            node = node.right
+
+        if node.left is None and node.right is None:
+            decoded_list.append(node.get_char())
+            node = tree.get_root()
+
+    return ''.join(decoded_list)
 
 
 
 
 
-
-huffman = Huffman('bccabbddaeccbbaeddcc')
-huffman.huffman_encode()
-print(huffman.huffman_tree)
-
-print(huffman.codes)
-
-
-#    while s.num_elements > 1:
-#        a = s.pop()
-#        b = s.pop()
-#        #create a tree
-#        t = Tree()
-#        t.set_root(_node_specific_freq(a) + _node_specific_freq(b))
-#        #print('root: ', a.get_freq() + b.get_freq(), t.get_root().get_freq())
-#        if _node_specific_freq(a) < t.get_root().get_freq():
-#            t.get_root().set_left_child(a)
-#            t.get_root().set_right_child(b)
-#        else:
-#            t.get_root().set_left_child(a)
-#            t.get_root().set_right_child(b)
-#        #add to stack
-#        top = s.top()
-#        #node
-#        #if type(top).__name__ == 'Node':
-#        if _node_specific_freq(top) != None and _node_specific_freq(top) >= t.get_root().get_freq():
-#            s.push(t)
-#            #print('pushing on top')
-#        else:#pop lighter nodes
-#            tmp_stack = []
-#            while _node_specific_freq(top) != None and  _node_specific_freq(top) < t.get_root().get_freq():
-#                tmp_stack.append(s.pop())
-#                top = s.top()
-#                #print('val: ', _node_specific_freq(top), t.get_root().get_freq())
-#                if _node_specific_freq(top) == None:
-#                    break
-#            s.push(t)
-#            #print('size of lighter nodes: ', len(tmp_stack))
-#            for tt in list(reversed(tmp_stack)):
-#                s.push(tt)
-#        #break
-#        #encode_data(data, s.top())
-#        #get codes for each character
-#        visit_order, codes = pre_order_with_stack(s.top())#s.top() is the tree
-#        '''print(visit_order)
-#        for c in codes.keys():
-#        print(c, codes[c])'''
+#huffman = Huffman('bccabbddaeccbbaeddcc')
+#huffman.huffman_encode()
+#print(huffman.data)
+#print(huffman.huffman_tree)
+#print(huffman.code)
+#print(huffman.encoded)
+#decoded = huffman.huffman_decode()
+#print(decoded == huffman.data)
 
 
 
 
+if __name__ == "__main__":
 
+
+    a_great_sentence = "The bird is the word"
+
+    huffman= Huffman()
+
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    huffman.data= a_great_sentence
+
+    encoded_data, tree = huffman.huffman_encode()
+
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman.huffman_decode()
+
+    assert decoded_data == a_great_sentence, 'Decoding changes input'
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+    def test_edges():
+        huffman = Huffman('')
+        huffman.huffman_encode()
+        assert huffman.huffman_decode() == huffman.data, 'Decoding changes input'
+
+        huffman.data= 'aaa'
+        huffman.huffman_encode()
+        assert huffman.huffman_decode() == huffman.data, 'Decoding changes input'
+
+    test_edges()
 
 
 
