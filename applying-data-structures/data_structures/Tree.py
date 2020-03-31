@@ -29,6 +29,5 @@ class Tree(object):
     def has_left_child(self):
         return self.left != None
 
-
     def has_right_child(self):
         return self.right != None
