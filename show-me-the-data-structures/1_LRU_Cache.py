@@ -101,6 +101,7 @@ if __name__ == '__main__':
 
         our_cache.set(5, 5)
         our_cache.set(6, 6)
+        our_cache.set(6, 6)
 
 
 

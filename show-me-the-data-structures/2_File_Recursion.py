@@ -17,22 +17,30 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
+    if not os.path.exists(path):
+        return f'Directory {path} does not exist'
 
-
-    paths = [os.path.join(path, d) for d in os.listdir(path) if \
-    os.path.isdir(os.path.join(path,d))]
+    if os.listdir(path):
+        paths = [os.path.join(path, d) for d in os.listdir(path) if \
+        os.path.isdir(os.path.join(path,d))]
+    else:
+        paths = []
 
     files = [os.path.join(path, f) for f in os.listdir(path) \
             if os.path.isfile(os.path.join(path, f)) and  f.endswith(suffix)]
 
 
+
     for path in paths:
         files+=find_files(suffix, path)
+
 
     return files
 
 
 if __name__ == '__main__':
+
+    # testing edge cases
 
     parser = argparse.ArgumentParser()
     def dir_path(string):
@@ -49,5 +57,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
     initial_dir = args.initial_dir
     suffix = args.suffix
-    #print(initial_dir, '/n', suffix)
+    print(find_files(suffix, initial_dir))
+
+
+    # testing edge cases
+    # 1 Non existent suffix
+    initial_dir = args.initial_dir
+    suffix = '.flying_flamingo'
+    print(find_files(suffix, initial_dir))
+
+    # 2 Non existent initial dir
+    initial_dir = 'flying_flamingo'
+    suffix = args.suffix
     print(find_files(suffix, initial_dir))

@@ -5,12 +5,10 @@ class Group(object):
         self.name = _name
         self.groups = []
         self.users = []
-        #self.groups_b = BinaryTree()
         self.users_b = BinaryTree()
 
     def add_group(self, group):
         self.groups.append(group)
-        #self.groups_b.insert(group.get_name())
 
     def add_user(self, user):
         self.users.append(user)
@@ -30,7 +28,6 @@ def is_user_in_group(user, group):
 
     if user == group.get_name():
         return True
-    #print(group.users_b.root)
     if group.get_users() and group.users_b.search(user):
         return True
     for g in group.get_groups():

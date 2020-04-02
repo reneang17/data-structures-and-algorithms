@@ -66,9 +66,22 @@ if __name__ == '__main__':
     def test_blockchain(block_chain):
         block_chain.is_chain_consistent()
 
+
     block_chain = Blockchain()
     for i in range(1,3):
         block_chain.chain_block(data = f'Test block {i}')
-
     test_blockchain(block_chain)
+
     block_chain.print_block()
+
+
+    #Aditional testing
+    # 1 same data
+    block_chain = Blockchain()
+    for i in range(1,3):
+        block_chain.chain_block(data = f'Test block')
+    test_blockchain(block_chain)
+
+    # 2 Empty chain
+    block_chain = Blockchain()
+    test_blockchain(block_chain)
