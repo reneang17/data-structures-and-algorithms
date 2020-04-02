@@ -21,7 +21,12 @@ class Node:
 
 class LRU_Cache():
     def __init__(self, capacity = 5):
-        self.capacity = capacity
+        # if input capacity is wrong set to 5
+        if capacity<0 or type(capacity) != 'int':
+            self.capacity = 5
+        else:
+            self.capacity = capacity
+
         self.hashmap = {}
 
         #Cache will be store in linked list
@@ -33,6 +38,7 @@ class LRU_Cache():
 
 
     def set(self, key, value):
+
 
         # Move to tail if key exists
         if key in self.hashmap:
@@ -108,5 +114,18 @@ if __name__ == '__main__':
         # returns -1 because the cache reached it's
         #capacity and 3 was the least recently used entry
         assert our_cache.get(3) == -1, 'Failed'
+
+        # Test edge cases:
+
+        #Zero capacity
+        our_cache = LRU_Cache(0.)
+        assert our_cache.capacity == 5, 'Fail'
+
+        #One capacity
+        our_cache = LRU_Cache(1)
+        our_cache.set(1, 1)
+        our_cache.set(2, 2)
+        assert our_cache.get(2) == 2
+
 
     test_LRU_Cache()

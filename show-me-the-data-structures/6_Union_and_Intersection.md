@@ -9,12 +9,12 @@ Generally, I used binary trees to eliminate duplicates and searching.
 
 - Empty linked into binatry tree. O\(n_1\) in space and O\( log(n_1)\) in time.
 - Empty the other linked list into binary tree. O\(n_2\) in space and O\( log(n_2)\) in time.
-- Flatten binary tree and empty it into linked list. Space O\(n_1+n_2\) time O\(n_1\).
+- Flatten binary tree and empty it into linked list. Space and time O\(n\), where n = n_1+n_2.
 - Tested, including edge cases.
 
 ### Complexity
 
-- Big O, time complexity: \(O(lon(n))\).
+- Big O, time complexity: \(O(lon(n))\)
 
 - Big O, space complexity: \(O(n)\)
 
@@ -22,8 +22,8 @@ Generally, I used binary trees to eliminate duplicates and searching.
 
 - Empty linked into binatry tree. O\(n_1\) in space and O\( log(n_1)\) in time.
 - Empty linked into binatry tree. O\(n_2\) in space and O\( log(n_2)\) in time.
-- Iterate over one tree checking that nodes are share by both trees. Time O\(n_2 log(n_1)\).
-Empty into linked list. O\(n_1\)
+- Iterate over one tree checking that nodes are share by both trees. Time O\(n log(n)\).
+Empty into linked list. O\(n\) in space, where n = n_1+n_2.
 - Tested, including edge cases.
 
 ### Complexity

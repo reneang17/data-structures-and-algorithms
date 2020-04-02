@@ -99,14 +99,14 @@ def intersection(llist_1, llist_2):
     if llist_1.size()==0 or llist_2.size() ==0:
         return LinkedList()
 
-    # Insert elements of llist_1 into linked llist_1
+    # Insert elements of llist_1 into bt1
     bt1 = BinaryTree()
     node = llist_1.head
     while node:
         bt1.insert(node.value)
         node = node.next
 
-    # Insert elements of llist_1 into linked llist_1
+    # Insert elements of llist_2 into bt2
     bt2 = BinaryTree()
     node = llist_2.head
     while node:

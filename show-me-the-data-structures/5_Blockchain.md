@@ -10,7 +10,7 @@ time stamp.
 
 - The block has their on class, with automatically generated hash codes using the
 data and time stamps.
-- The chain is implemented using
+- The chain is implemented using a linked list/ and separately an array.
 - Implemented function to verity the whole change is consistent. Time complexity O(n_blocks), because
 reproducing the hashes is O(1).
 - Tested, including edge cases. 

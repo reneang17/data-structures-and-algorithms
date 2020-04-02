@@ -8,7 +8,7 @@ Search active users in groups and subgroups.
 
 - Modified Group class to store users in a binary tree, adding O\(m_files\) time and space complexity.
 - Function search recursively in subfolders. Time complexity O\(O_subfolder log(m_files) \). Space complexity is O\(1\).
-- Tested, including edge cases. 
+- Tested, including edge cases.
 
 ### Complexity
 
