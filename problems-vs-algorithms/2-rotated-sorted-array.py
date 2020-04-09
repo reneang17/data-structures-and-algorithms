@@ -1,6 +1,6 @@
 from basic_algorithms import binary_search
 
-def rotated_array_search(arr, number):
+def rotated_array_search(arr, target):
     """
     Find the index by searching in a rotated sorted array
     Args:
@@ -10,30 +10,37 @@ def rotated_array_search(arr, number):
     """
     # Address edge cases
     if len(arr) == 0: return -1
-    if len(arr) == 1 and number == arr[0]:
+    if len(arr) == 1 and target == arr[0]:
         return 0
-    if len(arr) == 1 and number != arr[0]:
+    if len(arr) == 1 and target != arr[0]:
         return -1
 
 
     # Search for index of rotation
     pivot = search_pivot(arr)
 
+    start_index = 0
+    end_index = len(arr) - 1
 
-    sorted_arr= arr[pivot+1:] + arr[:pivot+1]
-    sorted_index = binary_search(arr[pivot+1:] + arr[:pivot+1], number)
+    while start_index<=end_index:
+        mid = (start_index+ end_index)//2
+        r_mid = rotate_index(arr, pivot, mid)
+        if arr[r_mid] == target:
+            return r_mid
+        elif arr[r_mid] < target:
+            start_index=  mid+1
+        else:
+            end_index=  mid-1
+    return -1
 
-    if sorted_index  == -1:
-        return -1
 
+def rotate_index(arr, pivot, sorted_index):
     if sorted_index <= len(arr[pivot+1:])-1:
         rotated_index = sorted_index + len(arr[:pivot+1])
     else:
         rotated_index = sorted_index - len(arr[pivot+1:])
 
-
     return rotated_index
-
 
 
 def search_pivot(arr):
@@ -60,6 +67,7 @@ def search_pivot(arr):
         elif arr[0] > arr[mid]:
             upper =  mid - 1
         mid = lower +  (upper - lower) //2
+
 
 
 
