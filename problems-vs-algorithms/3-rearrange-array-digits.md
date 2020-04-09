@@ -6,6 +6,8 @@ Rearrange digits of unsorted array into two numbers, which yield the larges poss
 
 ### Choices and reasoning
 
+In order to satisfy the constrains I used:
+
 - Sort using merge sort. Time complexity  \(O(n * log(n))\), space complexity  \(O(n\).
 - Reverse array. Time  \(O(n\), space  \(O(n\)
 - Empty array into the two numbers. Time  \(O(n\), space  \(O(1\).

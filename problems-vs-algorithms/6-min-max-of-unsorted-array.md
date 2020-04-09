@@ -8,8 +8,11 @@ Find the smallest and largest integer from a list of unsorted integers. The code
 
 ### Choices and reasoning
 
+In order to satisfy the constrains I used:
+
 - Single iterating comparing at each step the max/min. Time complexity \(O(n\), space
 complexity \(O(1\).
+- More than 3 edge and normal cases tested.
 
 ### Complexity
 

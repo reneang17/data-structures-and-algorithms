@@ -6,6 +6,8 @@ Calculate integer square root.
 
 ### Choices and reasoning
 
+In order to satisfy the constrains I used:
+
 - Binary search over possible roots.
 - More than 3 edge and normal cases tested.
 

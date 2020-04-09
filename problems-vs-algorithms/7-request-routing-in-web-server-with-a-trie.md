@@ -5,7 +5,8 @@ Build an autocomplete system with a Trie.
 Build a router using a trie.
 
 
-### Choices and reasoning and Complexity of methods implemented.
+### Choices and reasoning and complexity of methods implemented.
+
 
 Class RouteTrieNode
 -  Individual insert have time complexity \(O(1\) and space complexity \(O(m\) where m is the max length of the paths.

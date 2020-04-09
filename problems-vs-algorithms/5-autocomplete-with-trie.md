@@ -2,10 +2,11 @@ Build an autocomplete system with a Trie.
 ================
 
 ### Task
-Build an autocomplete function using a Trie
+Build an autocomplete function using a Trie.
 
 
-### Choices and reasoning and Complexity of methods implemented.
+### Choices and reasoning and complexity of methods implemented.
+
 
 Class TrieNode.
 -  Individual insert have time complexity \(O(1\) and space complexity \(O(m\) where m is the max length of the strings.
