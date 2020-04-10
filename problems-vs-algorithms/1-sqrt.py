@@ -14,12 +14,12 @@ def sqrt(number):
     upper = number
     mid  = lower + (upper-lower) //2
     while True:
-        if mid < int(number**0.5):
-            lower = mid+1
-        elif mid > int(number**0.5):
-            upper = mid -1
-        else:
+        if mid**2 ==number or (mid**2<number and (mid+1)**2 >number):
             return mid
+        elif mid**2 < number:
+            lower = mid+1
+        elif mid**2 > number:
+            upper = mid -1
         mid  = lower + (upper-lower)//2
     return -1
 
