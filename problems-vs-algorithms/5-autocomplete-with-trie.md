@@ -14,7 +14,7 @@ Class TrieNode.
 
 Class Trie.
 - Insert calls the insert TrieNode method for each character of relevant word. In the worst case, the time complexity is \(O(n*m\) where n is the total number of words in the Trie, so far, and m is the word length. The space complexity is O(m). See
-![referece](https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014)
+[referece](https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014)
 
 - Find simply hashes to make to its destination. Space complexity \(O(1\) and time complexity \(O(1\).
 

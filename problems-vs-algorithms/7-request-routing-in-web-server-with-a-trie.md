@@ -16,7 +16,7 @@ Class RouteTrieNode
 
 Class RouteTrie:
 - Insert simply calls the TrieNode method for each part of the path. In the worst case, the time complexity is \(O(n*m*\) where n is the total number of paths in the Trie and the number of the path to be inserted, it is defined by using the Split_path method. The space complexity is O(m*s), where s is the longest part of the path. See
-![referece](https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014) for details.
+[referece](https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014) for details.
 
 
 Class Trie.
