@@ -13,6 +13,7 @@ You'll find some implementation from scratch and uses of the following:
 - Trie
 - Quees and Stack
 - Heap tree
+- Graphs
 
 ### Algorithsm (from scrath)
 
@@ -22,3 +23,6 @@ You'll find some implementation from scratch and uses of the following:
 - Quickselect
 - Binary search
 - Heapsort
+- Dynamic programing 
+- A*
+- Dijkstra
