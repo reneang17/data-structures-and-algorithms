@@ -14,6 +14,7 @@ You'll find some implementation from scratch and uses of the following:
 - Quees and Stack
 - Heap tree
 - Graphs
+- Blockchain
 
 ### Algorithsm (from scrath)
 
@@ -26,3 +27,4 @@ You'll find some implementation from scratch and uses of the following:
 - Dynamic programing 
 - A*
 - Dijkstra
+- Huffman encoding
