@@ -1,4 +1,4 @@
-# Data Structure and Algorithms 
+# Data Structures and Algorithms 
 
 Here you could find my notes and exercises on my Nanodegree on Data Structures and algorithms. 
 Each relevant data structure and algirhtms include a unit test as well as time/space complexity analysis.
